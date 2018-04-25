@@ -3,6 +3,7 @@
     
     angular.module('openWeatherApp.controllers', [])
         .controller('AppCtrl', function($scope , $log , WeatherService, moment, _) {
+            // If there is no match and you want to see all the sections, you will need to change the values.
             var convenientTemp = 21;
             var convenientHumidity = 50;
             $scope.loading = true;
