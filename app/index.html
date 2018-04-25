@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="openWeatherApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+    <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="assets/css/app.css">
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+</head>
+<body ng-controller="AppCtrl">
+
+    <div class="page-loader" ng-show="loading">
+        <div class="loader"></div>
+        <p class="loader-text"><span>Loading...</span></p>
+    </div>
+    <!-- END -->
+    
+    <div class="wrapper">
+        <header>
+            <div class="container">
+                <div class="page-header text-center jumbotron">
+                    <p class="date">{{date}}</p>
+                    <h1>Weather App <small> The best weather on Earth</small></h1>
+                </div>
+            </div>
+        </header>
+        <main ng-hide="loading">
+            <div class="container">
+                <label class="optimal">
+                    <input type="checkbox" ng-model="showhideOptimalPlace"/> Show the Optimal Place for Male or Female
+                </label>
+            </div>
+            <div ng-if="showhideOptimalPlace" id="optimalPlace">
+                <div class="container">
+                    <h2>The Optimal Place for a Male or Female</h2>
+                    <div ng-show="!(optimalPlace | filter:noMatch).length">
+                        <p>{{optimalPlaceMessage}}</p>
+                    </div>
+                    <div class="card-group">
+                        <div class="card border-primary mb-3 mr-3" ng-repeat="city in optimalPlace | filter:noMatch">
+                            <div class="card-header">{{city.name}}</div>
+                            <div class="card-body text-primary">
+                                <h5 class="card-title">
+                                    <p class="temp-value">{{city.main.temp}}</p> 
+                                    <span class="deg">0</span>
+                                    <span class="temp-type">C</span>
+                                </h5>
+                                <p class="card-text"><i class="fas fa-tint"></i> {{city.main.humidity}}%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="winningWeather">
+                <h2>Cities With The Most Convenient Weather</h2>
+                <div ng-show="!(winningCities | filter:noMatch).length">
+                    <p>{{winningMessage}}</p>
+                </div>
+                <div class="card-group">
+                    <div class="card border-dark mb-3 mr-3" ng-repeat="city in winningCities | filter:noMatch">
+                        <div class="card-header">{{city.name}}</div>
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">
+                                <p class="temp-value">{{city.main.temp}}</p> 
+                                <span class="deg">0</span>
+							    <span class="temp-type">C</span>
+                            </h5>
+                            <p class="card-text"><i class="fas fa-tint"></i> {{city.main.humidity}}%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container" id="leadingWeather">
+                <h2>Weather of Leading Cities</h2>
+                <div ng-show="!(leadingCities | filter:noMatch).length">
+                    <p>{{leadingMessage}}</p>
+                </div>
+                <div class="card-group">
+                    <div class="card border-info mb-3 mr-3" ng-repeat="city in leadingCities | filter:noMatch">
+                        <div class="card-header">{{city.name}}</div>
+                        <div class="card-body text-info">
+                            <h5 class="card-title">
+                                <p class="temp-value">{{city.main.temp}}</p> 
+                                <span class="deg">0</span>
+							    <span class="temp-type">C</span>
+                            </h5>
+                            <p class="card-text"><i class="fas fa-tint"></i> {{city.main.humidity}}%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-route/angular-route.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-moment/angular-moment.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+    <script src="services/services.js"></script>
+    <script src="controllers/weather.controller.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "AngularJS-openweather-app",
+  "description": "A weather forecast app written in AngularJS based on OpenWeatherMap API call",
+  "main": "app/index.html",
+  "version": "0.0.0",
+  "authors": [
+    "Itay Noama <itay.noama@gmail.com>"
+  ],
+  "homepage": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "html5-boilerplate": "^5.3.0",
+    "angular-moment": "^1.2.0"
+  }
+}
